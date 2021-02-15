@@ -13,18 +13,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
+
         displayTip(0.0)
 
-        binding.calculateButton.setOnClickListener{ calculateTip() }
+        binding.calculateButton.setOnClickListener { calculateTip() }
     }
 
     private fun calculateTip() {
-        val stringInTextField = binding.costOfService.text.toString()
+        val stringInTextField = binding.costOfServiceEditText.text.toString()
         val cost = stringInTextField.toDoubleOrNull()
 
         // If the cost is null or 0, then display 0 tip and exit this function early
-        if(cost == null) {
+        if (cost == null) {
             displayTip(0.0)
             return
         }
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         var tip = tipPercentage * cost
 
-        if(binding.roundUpSwitch.isChecked) {
+        if (binding.roundUpSwitch.isChecked) {
             tip = kotlin.math.ceil(tip)
         }
 
